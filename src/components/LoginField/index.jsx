@@ -1,18 +1,10 @@
-import React, { useContext, useCallback } from "react";
-import { UserContext } from "../../UserContext";
+import React from "react";
 import { StyledInput, StyledParagraph } from "./styles";
 import Button from "../Button/index";
 
-const LoginField = ({ loginEvent }) => {
-  const { setPasswordField, setLoginField } = useContext(UserContext);
+const LoginField = ({ loginEvent ,values}) => {
 
-  // const check = () =>{
-  //   if(! && !){
-  //     return <p>Incorrect username or password</p>;
-  //   }
-  // }
-
- 
+  const {setLoginField,setPasswordField} = values;
   return (
     <>
       <StyledParagraph>Login</StyledParagraph>
@@ -22,7 +14,6 @@ const LoginField = ({ loginEvent }) => {
         style={{ fontSize: "20px", textIndent: "5px" }}
       />
       <StyledParagraph>Password</StyledParagraph>
-       {/* <p>{check()}</p>  */}
       <StyledInput
         onChange={(e) => setPasswordField(e.target.value)}
         type="password"

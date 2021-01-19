@@ -5,7 +5,7 @@ export const StyledInput = styled.input`
   height: 48px;
   margin-bottom: 24px;
   border: 1px solid #00000026;
-border-radius: 2px;
+  border-radius: 2px;
 `;
 
 export const StyledParagraph = styled.p`

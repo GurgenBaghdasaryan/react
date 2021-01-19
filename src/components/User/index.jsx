@@ -1,23 +1,25 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { StyledButton } from "./styles";
 import { useHistory } from "react-router-dom";
- import {UserContext} from "../../UserContext";
+import {UserContext} from '../../UserContext/index'
+
 
 const User = () => {
-  const {login , password } = useContext(UserContext);
+  const {setToken} = useContext(UserContext)
 
   const history = useHistory();
 
-  const logIn = () => {    
-    history.push('/')
+  const logOut = () => {
+    history.push("/Login");
+    localStorage.removeItem("access_token");
+    setToken('')
   };
 
   return (
     <>
-      <p>{login}</p>
-      <p>{password}</p>
-
-      <StyledButton type="checkbox" onClick={logIn}>Log Out</StyledButton>
+      <StyledButton type="checkbox" onClick={logOut}>
+        Log Out
+      </StyledButton>
     </>
   );
 };
