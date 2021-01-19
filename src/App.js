@@ -6,7 +6,7 @@ import "./App.css";
 
 const App = () => {
   return (
-    <main className='main'>
+    <main className="main">
       <Switch>
         <Route path="/" component={User} exact />
         <Route path="/Login" component={Login} />

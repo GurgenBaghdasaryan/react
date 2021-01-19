@@ -2,9 +2,9 @@ import React from "react";
 import { StyledInput, StyledParagraph } from "./styles";
 import Button from "../Button/index";
 
-const LoginField = ({ loginEvent ,values}) => {
+const LoginField = ({ loginEvent, values }) => {
+  const { setLoginField, setPasswordField } = values;
 
-  const {setLoginField,setPasswordField} = values;
   return (
     <>
       <StyledParagraph>Login</StyledParagraph>

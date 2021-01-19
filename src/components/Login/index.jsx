@@ -5,14 +5,14 @@ import axios from "axios";
 import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
 
 const Login = () => {
-  const [loginField,setLoginField] = useState("");
-  const [passwordField,setPasswordField] = useState("");
+  const [loginField, setLoginField] = useState("");
+  const [passwordField, setPasswordField] = useState("");
 
   const values = {
     setLoginField,
     setPasswordField,
-  }
-   
+  };
+
   const history = useHistory();
   const logIn = () => {
     axios
@@ -30,7 +30,7 @@ const Login = () => {
     <StyledLoginPage>
       <div>
         <StyledHeading>LOGIN</StyledHeading>
-        <LoginField loginEvent={logIn} values={values}/>
+        <LoginField loginEvent={logIn} values={values} />
         <StyledParagraph>Reset Your Password</StyledParagraph>
       </div>
     </StyledLoginPage>
