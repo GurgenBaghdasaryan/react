@@ -9,14 +9,6 @@ export const StyledLoginPage = styled.div`
   height: 430px;
   border-radius: 3px;
   box-shadow: 2px 2px 2px 2px #e5e5e5;
-  /* @media (max-width: 1000px) {
-    width: 50%;
-    height: 50%;
-  } */
-`;
-
-export const StyledMain = styled.div`
- 
 `;
 
 export const StyledHeading = styled.h2`

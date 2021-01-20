@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import LoginField from "../LoginField";
 import axios from "axios";
 import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
@@ -23,7 +24,8 @@ const Login = () => {
       .then((result) => {
         localStorage.setItem("access_token", result.data.access_token);
         history.push("/");
-      });
+      })
+      .catch((err) => history.push("/login"));
   };
 
   return (
