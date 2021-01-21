@@ -3,7 +3,7 @@ import { StyledButton } from "./styles";
 
 const Button = ({ clickEvent }) => {
   return (
-    <StyledButton type="checkbox" onClick={clickEvent}>
+    <StyledButton onClick={clickEvent}>
       Login
     </StyledButton>
   );

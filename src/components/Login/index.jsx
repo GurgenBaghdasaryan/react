@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import LoginField from "../LoginField";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import LoginContent from "./LoginContent";
+import { UserContext } from "../../UserContext";
 import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
 
 const Login = () => {
   const [loginField, setLoginField] = useState("");
   const [passwordField, setPasswordField] = useState("");
+
+  const { setToken } = useContext(UserContext);
 
   const values = {
     setLoginField,
@@ -23,16 +25,16 @@ const Login = () => {
       })
       .then((result) => {
         localStorage.setItem("access_token", result.data.access_token);
+        setToken(result.data.access_token);
         history.push("/");
-      })
-      .catch((err) => history.push("/login"));
+      });
   };
 
   return (
     <StyledLoginPage>
       <div>
         <StyledHeading>LOGIN</StyledHeading>
-        <LoginField loginEvent={logIn} values={values} />
+        <LoginContent loginEvent={logIn} values={values} />
         <StyledParagraph>Reset Your Password</StyledParagraph>
       </div>
     </StyledLoginPage>

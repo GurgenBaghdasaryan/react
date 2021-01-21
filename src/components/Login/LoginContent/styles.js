@@ -6,6 +6,8 @@ export const StyledInput = styled.input`
   margin-bottom: 24px;
   border: 1px solid #00000026;
   border-radius: 2px;
+  font-size: 20px;
+  text-indent: 5px ;
 `;
 
 export const StyledParagraph = styled.p`

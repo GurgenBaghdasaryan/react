@@ -1,9 +1,9 @@
+import DataList from "./DataList";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { StyledButton } from "./styles";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../../UserContext/index";
-import DataList from "../../DataList/";
-import axios from "axios";
+import { UserContext } from "../../UserContext/";
 
 const User = () => {
   const { setToken } = useContext(UserContext);
@@ -22,8 +22,7 @@ const User = () => {
       .then((res) => {
         setData(res.data.data);
         history.push("/");
-      })
-      .catch((err) => history.push("/login"));
+      });
   }, [getToken]);
 
   const logOut = () => {
@@ -35,7 +34,7 @@ const User = () => {
   return (
     <>
       <DataList data={data} />
-      <StyledButton type="checkbox" onClick={logOut}>
+      <StyledButton onClick={logOut}>
         Log Out
       </StyledButton>
     </>

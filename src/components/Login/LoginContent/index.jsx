@@ -1,8 +1,8 @@
 import React from "react";
 import { StyledInput, StyledParagraph } from "./styles";
-import Button from "../Button/index";
+import Button from "../../shared/Button/index";
 
-const LoginField = ({ loginEvent, values }) => {
+const LoginContent = ({ loginEvent, values }) => {
   const { setLoginField, setPasswordField } = values;
 
   return (
@@ -11,13 +11,11 @@ const LoginField = ({ loginEvent, values }) => {
       <StyledInput
         onChange={(e) => setLoginField(e.target.value)}
         type="text"
-        style={{ fontSize: "20px", textIndent: "5px" }}
       />
       <StyledParagraph>Password</StyledParagraph>
       <StyledInput
         onChange={(e) => setPasswordField(e.target.value)}
         type="password"
-        style={{ fontSize: "20px", textIndent: "5px" }}
       />
       <br />
 
@@ -27,4 +25,4 @@ const LoginField = ({ loginEvent, values }) => {
   );
 };
 
-export default LoginField;
+export default LoginContent;
