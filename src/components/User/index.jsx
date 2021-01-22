@@ -1,9 +1,9 @@
-import DataList from "./DataList";
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { StyledButton } from "./styles";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../UserContext/";
+import DataList from "./DataList";
+import { StyledButton } from "./styles";
 
 const User = () => {
   const { setToken } = useContext(UserContext);
@@ -34,9 +34,7 @@ const User = () => {
   return (
     <>
       <DataList data={data} />
-      <StyledButton onClick={logOut}>
-        Log Out
-      </StyledButton>
+      <StyledButton onClick={logOut}>Log Out</StyledButton>
     </>
   );
 };

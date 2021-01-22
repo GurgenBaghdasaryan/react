@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledInput, StyledParagraph } from "./styles";
 import Button from "../../shared/Button/index";
+import { StyledInput, StyledParagraph } from "./styles";
 
 const LoginContent = ({ loginEvent, values }) => {
   const { setLoginField, setPasswordField } = values;
@@ -18,7 +18,6 @@ const LoginContent = ({ loginEvent, values }) => {
         type="password"
       />
       <br />
-
       <Button clickEvent={loginEvent} />
       <br />
     </>

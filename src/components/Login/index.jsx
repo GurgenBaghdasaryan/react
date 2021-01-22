@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import LoginContent from "./LoginContent";
 import { UserContext } from "../../UserContext";
+import LoginContent from "./LoginContent";
 import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
 
 const Login = () => {
