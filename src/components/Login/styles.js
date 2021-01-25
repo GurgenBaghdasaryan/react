@@ -5,7 +5,7 @@ export const StyledLoginPage = styled.div`
   justify-content: center;
   background: #fff;
   width: 480px;
-  height: 430px;
+  height: auto;
   border-radius: 3px;
   box-shadow: 2px 2px 2px 2px #e5e5e5;
   align-self: center;

@@ -8,7 +8,8 @@ import { StyledButton } from "./styles";
 const User = () => {
   const { setToken } = useContext(UserContext);
   const [data, setData] = useState([]);
-
+  const context = useContext(UserContext);
+  const { setDisable } = context;
   const history = useHistory();
   const getToken = localStorage.getItem("access_token");
 
@@ -29,6 +30,7 @@ const User = () => {
     history.push("/login");
     localStorage.removeItem("access_token");
     setToken("");
+    setDisable("");
   };
 
   return (

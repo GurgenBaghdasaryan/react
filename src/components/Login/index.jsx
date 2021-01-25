@@ -8,10 +8,11 @@ import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
 const Login = () => {
   const [loginField, setLoginField] = useState("");
   const [passwordField, setPasswordField] = useState("");
-
-  const { setToken } = useContext(UserContext);
+  const { setToken, setDisable } = useContext(UserContext);
 
   const values = {
+    loginField,
+    passwordField,
     setLoginField,
     setPasswordField,
   };
@@ -27,7 +28,8 @@ const Login = () => {
         localStorage.setItem("access_token", result.data.access_token);
         setToken(result.data.access_token);
         history.push("/");
-      });
+      })
+      .catch((e) => setDisable(true));
   };
 
   return (
