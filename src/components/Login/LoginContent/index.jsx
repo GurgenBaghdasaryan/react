@@ -3,8 +3,14 @@ import Button from "../../shared/Button/index";
 import { UserContext } from "../../../UserContext";
 import { StyledInput, StyledParagraph, StyledH } from "./styles";
 
-const LoginContent = ({ loginEvent, values, errors }) => {
-  const { loginField, passwordField, setLoginField, setPasswordField } = values;
+const LoginContent = ({
+  loginEvent,
+  errors,
+  loginField,
+  passwordField,
+  setLoginField,
+  setPasswordField,
+}) => {
   const { error, setError } = errors;
   const context = useContext(UserContext);
 

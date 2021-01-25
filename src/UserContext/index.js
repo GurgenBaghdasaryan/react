@@ -3,10 +3,10 @@ import React, { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const getToken = localStorage.getItem("access_token");
   const [token, setToken] = useState("");
 
   useEffect(() => {
+    const getToken = localStorage.getItem("access_token");
     setToken(getToken);
   }, []);
 

@@ -20,7 +20,7 @@ const App = () => {
       return (
         <>
           <Route path="/login" component={Login} />
-          <Redirect path="/" to="/login" />
+          <Redirect path="*" to="/login" />
         </>
       );
     }

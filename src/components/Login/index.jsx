@@ -16,13 +16,6 @@ const Login = () => {
     setError,
   };
 
-  const values = {
-    loginField,
-    passwordField,
-    setLoginField,
-    setPasswordField,
-  };
-
   const history = useHistory();
   const logIn = () => {
     axios
@@ -42,7 +35,14 @@ const Login = () => {
     <StyledLoginPage>
       <div>
         <StyledHeading>LOGIN</StyledHeading>
-        <LoginContent loginEvent={logIn} values={values} errors={errors} />
+        <LoginContent
+          loginEvent={logIn}
+          errors={errors}
+          loginField={loginField}
+          passwordField={passwordField}
+          setLoginField={setLoginField}
+          setPasswordField={setPasswordField}
+        />
         <StyledParagraph>Reset Your Password</StyledParagraph>
       </div>
     </StyledLoginPage>
