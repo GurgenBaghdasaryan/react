@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "../../shared/Button/index";
 import { UserContext } from "../../../UserContext";
-import { StyledInput, StyledParagraph } from "./styles";
+import { StyledInput, StyledParagraph, StyledH } from "./styles";
 
 const LoginContent = ({ loginEvent, values }) => {
   const { loginField, passwordField, setLoginField, setPasswordField } = values;
@@ -26,7 +26,7 @@ const LoginContent = ({ loginEvent, values }) => {
         onChange={(e) => setPasswordField(e.target.value)}
         type="password"
       />
-      {disable && <div>Invalid username/password</div>}
+      {disable && <StyledH>Invalid username/password</StyledH>}
       <br />
       <Button clickEvent={loginEvent} check={check} />
       <br />

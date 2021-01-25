@@ -14,3 +14,9 @@ export const StyledParagraph = styled.p`
   color: #262626;
   font-size: 14px;
 `;
+
+export const StyledH = styled.h5`
+  color: red;
+  font-size: 14px;
+  margin: 0px;
+`;

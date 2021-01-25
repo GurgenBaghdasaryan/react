@@ -11,6 +11,7 @@ export const StyledTableTh = styled.th`
   text-align: left;
   background-color: #4caf50;
   color: white;
+  justify-content: space-between;
 `;
 
 export const StyledTableTd = styled.td`
