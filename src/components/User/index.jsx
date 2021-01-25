@@ -8,8 +8,6 @@ import { StyledButton } from "./styles";
 const User = () => {
   const { setToken } = useContext(UserContext);
   const [data, setData] = useState([]);
-  const context = useContext(UserContext);
-  const { setDisable } = context;
   const history = useHistory();
   const getToken = localStorage.getItem("access_token");
 
@@ -17,7 +15,7 @@ const User = () => {
     axios
       .get("https://volatile-admin-api.herokuapp.com/employee", {
         headers: {
-          Authorization: `token ${getToken}`,
+          Authorization: `Bearer ${getToken}`,
         },
       })
       .then((res) => {
@@ -30,7 +28,6 @@ const User = () => {
     history.push("/login");
     localStorage.removeItem("access_token");
     setToken("");
-    setDisable("");
   };
 
   return (

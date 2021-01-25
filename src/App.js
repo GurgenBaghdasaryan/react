@@ -12,15 +12,15 @@ const App = () => {
     if (context.token) {
       return (
         <>
-          <Redirect to="/" />
-          <Route path="/" component={User} exact />
+          <Route path="*" component={User} exact />
+          <Redirect path="/" to="/" />
         </>
       );
     } else {
       return (
         <>
-          <Redirect path="/" to="/login" />
           <Route path="/login" component={Login} />
+          <Redirect path="/" to="/login" />
         </>
       );
     }

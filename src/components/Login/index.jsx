@@ -8,7 +8,13 @@ import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
 const Login = () => {
   const [loginField, setLoginField] = useState("");
   const [passwordField, setPasswordField] = useState("");
-  const { setToken, setDisable } = useContext(UserContext);
+  const [error, setError] = useState(false);
+  const { setToken } = useContext(UserContext);
+
+  const errors = {
+    error,
+    setError,
+  };
 
   const values = {
     loginField,
@@ -29,14 +35,14 @@ const Login = () => {
         setToken(result.data.access_token);
         history.push("/");
       })
-      .catch((e) => setDisable(true));
+      .catch((e) => setError(true));
   };
 
   return (
     <StyledLoginPage>
       <div>
         <StyledHeading>LOGIN</StyledHeading>
-        <LoginContent loginEvent={logIn} values={values} />
+        <LoginContent loginEvent={logIn} values={values} errors={errors} />
         <StyledParagraph>Reset Your Password</StyledParagraph>
       </div>
     </StyledLoginPage>

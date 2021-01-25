@@ -1,8 +1,8 @@
 import React from "react";
 import { StyledButton } from "./styles";
 
-const Button = ({ clickEvent }) => {
-  return <StyledButton onClick={clickEvent}>Login</StyledButton>;
+const Button = ({ clickEvent, children }) => {
+  return <StyledButton onClick={clickEvent}>{children}</StyledButton>;
 };
 
 export default Button;

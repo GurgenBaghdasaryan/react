@@ -13,14 +13,15 @@ const DataList = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((i) => (
-          <tr>
-            <StyledTableTd>{i.first_name}</StyledTableTd>
-            <StyledTableTd>{i.last_name}</StyledTableTd>
-            <StyledTableTd>{i.email}</StyledTableTd>
-            <StyledTableTd>{i.city}</StyledTableTd>
-          </tr>
-        ))}
+        {data &&
+          data.map((i) => (
+            <tr>
+              <StyledTableTd>{i.first_name}</StyledTableTd>
+              <StyledTableTd>{i.last_name}</StyledTableTd>
+              <StyledTableTd>{i.email}</StyledTableTd>
+              <StyledTableTd>{i.city}</StyledTableTd>
+            </tr>
+          ))}
       </tbody>
     </StyledTable>
   );

@@ -1,17 +1,18 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const getToken = localStorage.getItem("access_token");
-  const [token, setToken] = useState(getToken);
-  const [disable, setDisable] = useState(false);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    setToken(getToken);
+  }, []);
 
   const values = {
     token,
-    disable,
     setToken,
-    setDisable,
   };
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>;
 };

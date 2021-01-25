@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Button from "../../shared/Button/index";
 import { UserContext } from "../../../UserContext";
 import { StyledInput, StyledParagraph, StyledH } from "./styles";
 
-const LoginContent = ({ loginEvent, values }) => {
+const LoginContent = ({ loginEvent, values, errors }) => {
   const { loginField, passwordField, setLoginField, setPasswordField } = values;
+  const { error, setError } = errors;
   const context = useContext(UserContext);
-  const { disable, setDisable } = context;
 
   const check = () => {
     if (!loginField || !passwordField || !context.token) {
-      setDisable(true);
+      setError(true);
     }
   };
 
@@ -26,9 +26,11 @@ const LoginContent = ({ loginEvent, values }) => {
         onChange={(e) => setPasswordField(e.target.value)}
         type="password"
       />
-      {disable && <StyledH>Invalid username/password</StyledH>}
+      {error && <StyledH>Invalid username/password</StyledH>}
       <br />
-      <Button clickEvent={loginEvent} check={check} />
+      <Button clickEvent={loginEvent} check={check}>
+        Login
+      </Button>
       <br />
     </>
   );
