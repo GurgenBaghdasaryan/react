@@ -1,24 +1,39 @@
-import React, { useContext } from "react";
-import { StyledButton } from "./styles";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../../UserContext/index";
+import { setToken } from "../../store/actions";
+import DataList from "./DataList";
+import { StyledButton } from "./styles";
 
 const User = () => {
-  const { setToken } = useContext(UserContext);
-
+  const [data, setData] = useState([]);
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("access_token");
+    axios
+      .get("https://volatile-admin-api.herokuapp.com/employee", {
+        headers: {
+          Authorization: `Bearer ${getToken}`,
+        },
+      })
+      .then((res) => {
+        setData(res.data);
+      });
+  }, []);
 
   const logOut = () => {
-    history.push("/Login");
     localStorage.removeItem("access_token");
-    setToken("");
+    dispatch(setToken(""));
+    history.push("/login");
   };
 
   return (
     <>
-      <StyledButton type="checkbox" onClick={logOut}>
-        Log Out
-      </StyledButton>
+      <DataList data={data} />
+      <StyledButton onClick={logOut}>Log Out</StyledButton>
     </>
   );
 };

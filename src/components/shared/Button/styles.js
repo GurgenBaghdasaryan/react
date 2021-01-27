@@ -9,4 +9,10 @@ export const StyledButton = styled.button`
   font-family: Arial;
   outline: none;
   border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #46ae04;
+    transform: translateY(4px);
+  }
 `;

@@ -1,17 +1,24 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import allReducers from "./store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import UserProvider from "./UserContext";
 import "./index.css";
 
+const store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 ReactDOM.render(
-  <UserProvider>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </UserProvider>,
+  </Provider>,
   document.getElementById("root")
 );
 
