@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setToken } from "./store/actions";
 import Login from "./components/Login/index";
 import User from "./components/User/index";
-import { useSelector } from "react-redux";
 import "./App.css";
-import { setToken } from "./store/actions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,9 @@ const App = () => {
   }, []);
 
   const GetRoute = () => {
-    const auth = useSelector((state) => state.auth.token);
-
-    if (auth) {
+    const token = useSelector((state) => state.auth.token);
+    
+    if (token) {
       return (
         <>
           <Route path="/user" component={User} exact />
@@ -28,7 +28,7 @@ const App = () => {
     } else {
       return (
         <>
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={Login} exact/>
           <Redirect path="*" to="/login" />
         </>
       );

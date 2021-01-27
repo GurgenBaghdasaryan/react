@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "../../shared/Button/index";
-import { useSelector } from "react-redux";
 import { StyledInput, StyledParagraph, StyledH } from "./styles";
 
 const LoginContent = ({
@@ -12,10 +11,9 @@ const LoginContent = ({
   setPasswordField,
 }) => {
   const { error, setError } = errors;
-  const token = useSelector((state) => state.token);
-
+  
   const check = () => {
-    if (!loginField || !passwordField || !token) {
+    if (!loginField || !passwordField) {
       setError(true);
     }
   };

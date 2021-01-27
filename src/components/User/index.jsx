@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DataList from "./DataList";
-import { setToken } from "../../store/actions";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setToken } from "../../store/actions";
+import DataList from "./DataList";
 import { StyledButton } from "./styles";
 
 const User = () => {
   const [data, setData] = useState([]);
   const history = useHistory();
-  const getToken = localStorage.getItem("access_token");
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const getToken = localStorage.getItem("access_token");
     axios
       .get("https://volatile-admin-api.herokuapp.com/employee", {
         headers: {
@@ -21,9 +21,8 @@ const User = () => {
       })
       .then((res) => {
         setData(res.data);
-        history.push("/user");
       });
-  }, [getToken]);
+  }, []);
 
   const logOut = () => {
     localStorage.removeItem("access_token");
