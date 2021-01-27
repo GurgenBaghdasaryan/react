@@ -1,19 +1,28 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Login from "./components/Login/index";
 import User from "./components/User/index";
-import { UserContext } from "./UserContext";
+import { useSelector } from "react-redux";
 import "./App.css";
+import { setToken } from "./store/actions";
 
 const App = () => {
-  const context = useContext(UserContext);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("access_token");
+    dispatch(setToken(getToken));
+  }, []);
 
   const GetRoute = () => {
-    if (context.token) {
+    const auth = useSelector((state) => state.auth.token);
+
+    if (auth) {
       return (
         <>
-          <Route path="/" component={User} exact />
-          <Redirect path="*" to="/" />
+          <Route path="/user" component={User} exact />
+          <Redirect path="*" to="/user" />
         </>
       );
     } else {

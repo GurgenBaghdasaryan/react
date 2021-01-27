@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import Button from "../../shared/Button/index";
-import { UserContext } from "../../../UserContext";
+import { useSelector } from "react-redux";
 import { StyledInput, StyledParagraph, StyledH } from "./styles";
 
 const LoginContent = ({
@@ -12,10 +12,10 @@ const LoginContent = ({
   setPasswordField,
 }) => {
   const { error, setError } = errors;
-  const context = useContext(UserContext);
+  const token = useSelector((state) => state.token);
 
   const check = () => {
-    if (!loginField || !passwordField || !context.token) {
+    if (!loginField || !passwordField || !token) {
       setError(true);
     }
   };

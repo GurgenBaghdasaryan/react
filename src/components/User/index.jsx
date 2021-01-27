@@ -1,15 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { UserContext } from "../../UserContext/";
 import DataList from "./DataList";
+import { setToken } from "../../store/actions";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { StyledButton } from "./styles";
 
 const User = () => {
-  const { setToken } = useContext(UserContext);
   const [data, setData] = useState([]);
   const history = useHistory();
   const getToken = localStorage.getItem("access_token");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -19,15 +20,15 @@ const User = () => {
         },
       })
       .then((res) => {
-        setData(res.data.data);
-        history.push("/");
+        setData(res.data);
+        history.push("/user");
       });
   }, [getToken]);
 
   const logOut = () => {
-    history.push("/login");
     localStorage.removeItem("access_token");
-    setToken("");
+    dispatch(setToken(""));
+    history.push("/login");
   };
 
   return (

@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../../UserContext";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../store/actions";
 import LoginContent from "./LoginContent";
 import { StyledLoginPage, StyledHeading, StyledParagraph } from "./styles";
 
@@ -9,8 +10,7 @@ const Login = () => {
   const [loginField, setLoginField] = useState("");
   const [passwordField, setPasswordField] = useState("");
   const [error, setError] = useState(false);
-  const { setToken } = useContext(UserContext);
-
+  const dispatch = useDispatch();
   const errors = {
     error,
     setError,
@@ -25,8 +25,8 @@ const Login = () => {
       })
       .then((result) => {
         localStorage.setItem("access_token", result.data.access_token);
-        setToken(result.data.access_token);
-        history.push("/");
+        dispatch(setToken(result.data.access_token));
+        history.push("/user");
       })
       .catch((e) => setError(true));
   };
